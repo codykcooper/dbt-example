@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: insur_data
+    tables: 
+      - name: state_prexisting_by_age
+        description: >- 
+          Tabel providing summaries of number of pre-exisitng conditions by age bucket. Includes District of Columbia for 
+          total of 51 cases. 
+      - name: travel_insurance
+        description: >-
+          Data documenting each policy and key information. Currently agency_type is limited to Travel Agency and Airlines
+        columns:
+          - name: agency_type
+            description: Column indicated agency type. Limited to two values, travel agency and airlines. 
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Travel Agency','Airlines']
+
+models:
+  - name: unpivot_pre_existing.sql
+    description: >-
+      Table unpivoting state_prexisting_by_age to long format for easier filtering for down stram analytics. Percent columns removed following 
+      pivot to avoid confusion. 
+    columns:
+      - name: value
+        description: Count of pre-existing conditions in state. 
