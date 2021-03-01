@@ -18,4 +18,4 @@ ENV DBT_DIR /dbt
 # Set working directory
 WORKDIR $DBT_DIR
 
-EXPOSE 80
+EXPOSE 8080

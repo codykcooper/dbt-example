@@ -4,19 +4,16 @@ docker run --name pg_local -p 5432:5432 \
 -e POSTGRES_USER=tbd_insur -e POSTGRES_PASSWORD=insur_pw \
 -e POSTGRES_DB=tutorial -d postgres:12.2
 
-docker run --name dbt -it -d \
--v local:
 
-
-docker run -p 8080:80 --name dbt -it -d \
+docker run -p 8080:8080 --name dbt -it -d \
 -v /Users/codycooper/.dbt/profiles.yml:/root/.dbt/profiles.yml \
 -v /Users/codycooper/Documents/GitHub/dbt-example:/dbt \
--d dbt_docker:latest
+-d dbt_example:latest
 
 
 docker logs -f --until=2s dbt
 
-docker exec -it --user root 6a9a57a06ec7 /bin/bash
+docker exec -it --user root 989d7bfa256f /bin/bash
 
 brew switch python 3.8
 

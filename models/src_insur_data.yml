@@ -19,7 +19,7 @@ sources:
                   values: ['Travel Agency','Airlines']
 
 models:
-  - name: unpivot_pre_existing.sql
+  - name: unpivot_pre_existing
     description: >-
       Table unpivoting state_prexisting_by_age to long format for easier filtering for down stram analytics. Percent columns removed following 
       pivot to avoid confusion. 
