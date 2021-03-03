@@ -61,7 +61,7 @@ Once this repo has been pulled navigate a terminal into the repo directory where
 docker build . -t dbt_example
 ```
 
-The above code builds a docker image based on the code present in `dockerfile`:
+The above code builds a docker image based on the instructions in `dockerfile`:
 
 ```docker
 FROM python:3.8.5
@@ -120,11 +120,11 @@ The data pipeline built in this project is not particularly sophisticated. What 
 
 DBT is oriented around creating data models. These data models are represented as `.sql` files, which contain the business logic used to prepare data. More impressively, dbt manages the order in wihch these models need to be created by genearating a directed acyclical graph (DAG) as models are built. Meaning, the user does not have to worry about specifying and managing the order in wihch models are executed. This will be visualized in the documentation just below. 
 
-DBT also supports the use of pre-existing packages for transforming data. This allows for jump starting and quickly extending analytic capabilities. As an exmpale, this project uses the popular dbt_utils package (specified in the packages.yml of this repo). This package provides convenitent functions ot make processing and transforming data easier. For example,  `models/staging/pivot_travel_insurance_metrics.sql` uses the `dbt_utils.pivot()` function to quickly and easily create a pivot table. This would typically require writing a series of `CASE WHEN` statemetns for each of the values. 
+DBT also supports the use of pre-existing packages for transforming data. This allows for quickly extending analytic capabilities. As an exmpale, this project uses the popular dbt_utils package (specified in the packages.yml of this repo). This package provides convenient functions to make processing and transforming data easier. For example, `models/staging/pivot_travel_insurance_metrics.sql` uses the `dbt_utils.pivot()` function to quickly and easily create a pivot table. This would typically require writing a series of `CASE WHEN` statemetns for each of the values. 
 
 ### documentation
 
-The largest impact that dbt can have an organizations is perhaps in its built in documentation features. This allows analysts, engineers, and decision makers to have a common soruce to reflect analytic pipelines and provide clear definitions of how data is flowing into decision making arens (e.g. Dashboards, predictive modeling, etc.).   
+The largest impact that dbt can have in organizations is in its built in documentation features. This allows analysts, engineers, and decision makers to have a common soruce to reflect analytic pipelines and provide clear definitions of how data is flowing into decision making arenas (e.g. Dashboards, predictive modeling, etc.).   
 
 From inside the docker image, run the following to generate and serve the documentation:
 
